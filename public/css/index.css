@@ -1,0 +1,36 @@
+body {
+	text-align: center;
+	background: url(/img/background.png) no-repeat center center fixed; 
+  	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
+}
+
+div {
+	margin-bottom: 10px;
+}
+
+.tile {
+	width: 200px;
+	height: 100px;
+	background-color: black;
+	margin-right: 10px;
+	margin-left: -3px;
+	border-radius: 50%;
+	border: none;
+}
+
+#start {
+	font-size: 40px;
+}
+
+img {
+	height: 150px;
+	width: 150px;
+}
+
+.gameboard {
+	top: 275px;
+}
+
