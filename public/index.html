@@ -4,36 +4,69 @@
 	<meta charset="UTF-8">
 	<title>Whack-A-Mole</title>
 	<link rel="shortcut icon" href="/img/whackamole.png">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" href="/font-awesome-4.4.0/css/font-awesome.css">
+	<link rel="stylesheet" href="/css/bootstrap.css">
 	<link rel="stylesheet" href="/css/index.css">
 </head>
 <body>
 	<main>
 		<section class="info">
 			<h1>Whack-A-Mole</h1>
-			<div id="level"></div>
-			<div id="record"></div>
-			<div id="timer"></div>
+			<div id="level">Level: 0</div>
+			<div id="record">Record: 0</div>
+			<div id="timer">Timer: 30</div>
 		</section>
 		<section class="gameboard">
-			<div>
-				<button class="tile" data-tile="1"></button>
-				<button class="tile" data-tile="2"></button>
-				<button class="tile" data-tile="3"></button>
+			<div class="hole-container" data-tile="1">
+				<div class="tile"></div>
+				<img src='/img/whackamole.png' />
 			</div>
-			<div>
-				<button class="tile" data-tile="4"></button>
-				<button class="tile" data-tile="5"></button>
-				<button class="tile" data-tile="6"></button>
+			<div class="hole-container" data-tile="2">
+				<div class="tile"></div>
+				<img src='/img/whackamole.png' />
 			</div>
-			<div>
-				<button class="tile" data-tile="7"></button>
-				<button class="tile" data-tile="8"></button>
-				<button class="tile" data-tile="9"></button>
+			<div class="hole-container" data-tile="3">
+				<div class="tile"></div>
+				<img src='/img/whackamole.png' />
+			</div>
+			<div class="hole-container" data-tile="4">
+				<div class="tile"></div>
+				<img src='/img/whackamole.png' />
+			</div>
+			<div class="hole-container" data-tile="5">
+				<div class="tile"></div>
+				<img src='/img/whackamole.png' />
+			</div>
+			<div class="hole-container" data-tile="6">
+				<div class="tile"></div>
+				<img src='/img/whackamole.png' />
+			</div>
+			<div class="hole-container" data-tile="7">
+				<div class="tile"></div>
+				<img src='/img/whackamole.png' />
+			</div>
+			<div class="hole-container" data-tile="8">
+				<div class="tile"></div>
+				<img src='/img/whackamole.png' />
+			</div>
+			<div class="hole-container" data-tile="9">
+				<div class="tile"></div>
+				<img src='/img/whackamole.png' />
 			</div>
 		</section>
-		<button id="start">Start</button>
+		<div id="buttons">
+			<button class="btn btn-danger" id="start"><i class="fa fa-lg fa-play"></i></button>
+			<button class="btn btn-primary" id="pause"><i class="fa fa-lg fa-pause"></i></button>
+			<div class="btn-group" role="group" aria-label="...">
+	  			<button type="button" class="btn btn-default" value="easy">Easy</button>
+	  			<button type="button" class="btn btn-default" value="medium">Medium</button>
+	  			<button type="button" class="btn btn-default" value="hard">Hard</button>
+			</div>
+		</div>
 	</main>
 	<script src="/js/jquery.js"></script>
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 	<script src="/js/index.js"></script>
 </body>
 </html>

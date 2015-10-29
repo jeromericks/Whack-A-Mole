@@ -1,16 +1,20 @@
 $(document).ready(function() {
 	"use strict";
 
+	$("html,body").css('cursor', "url(http://icons.iconarchive.com/icons/sirea/sharp-kitchen/128/Knife-icon.png), auto");
+
 	var moles;
 	var userGuess;
-	var level = 0;
+	var level;
 	var highScore = 0;
-	var timer = 30;
+	var duration = 500;
+	var timer;
 
 
 	function startGame() {
-	    addMole();
 	    intervalMole();
+	    timer = 30;
+		level = 0;
 	}
 
 	function randomMole() {
@@ -20,80 +24,102 @@ $(document).ready(function() {
 	}
 
 	function animateMole(random_hole) {
-		var mole = $("[data-tile='" + random_hole + "']");
-		$(mole).append("<img src='/img/whackamole.png' />");
+		$("[data-tile='" + random_hole + "'] img").animate({
+			top: '-80px'
+		}, duration)
+		console.log("top");
+
 		setTimeout(function() {
-			$(mole).remove("img");
-		}, 1000)
+			$("[data-tile='" + random_hole + "'] img").animate({
+				top: '100px'
+			}, duration)
+		}, duration + 100)
+
+		$(".gameboard").on("click", "img", function() {
+			console.log("clicked");
+			$("html,body").css('cursor', "url(http://wcdn2.dataknet.com/static/resources/icons/set57/6ff26b3b.png), auto");
+			level += 1;
+			$(this).hide("explode", {pieces: 100});
+			console.log(level);
+		});
+		$("html,body").delay(2000).css('cursor', "url(http://icons.iconarchive.com/icons/sirea/sharp-kitchen/128/Knife-icon.png), auto");
 	}
 
 	function intervalMole() {
 		var timerInterval = setInterval(function() {
 			timer--;
 			console.log("Timer: " + timer);
-			setTimer();
+			onRound();
 			if(timer == 0) {
 				clearInterval(timerInterval);
+				var x = confirm("Play again?");
+				if(x == true) {
+					startGame();
+				} else {
+					endGame();
+				}
+				
 			}
 			animateMole(randomMole());
 
 		}, 1000);
 	}
 
-	function onRound(sequence) {
-		$("#level").html("Level: " + sequence);
-		if (sequence > record) {
-			record = sequence;
-			$("#record").html("Record: " + record);
-		}
+	function selectLevel (){
+		var value = $('.active').val();
+		console.log(value);
+		switch (value) {
+		    case "easy":
+		    	duration = 2000;
+		    	break;
+		    case "medium":
+		    	duration = 500;
+		    	break;
+		    case "hard":
+		    	duration = 150;	
+		    	break;
+			}
 	}
 
-	function setTimer() {
+	function onRound() {
 		$("#timer").html("Timer: " + timer);
-	}
-
-	function nextRound() {
-		userGuess = '';
-		moles = '';
-		onRound(moles);
-		intervalMole();
-	}
-
-	function checkValue(sequence, user) {
-		if (sequence == user) {
-			return true;
-		}
-		return false;
-	}
-
-	function validateValue(sequence, user) {
-		var right = checkValue(moles, userGuess);
-		if (right == false) {
-			userGuess = '';
-			moles = '';
-			onRound(moles);
-			alert("Game Over");
-		}
-		else {
-			nextRound();
+		$("#level").html("Level: " + level);
+		if (level > highScore) {
+			highScore = level;
+			$("#record").html("Record: " + highScore);
 		}
 	}
-
-	function addMole() {
-		
-	}
-
-	function getNewHole() {
-
-	}
-
 
 	function endGame() {
-
+		console.log("Game ended!")
 	}
 
+	$(".btn-group button:first-child").addClass("active");
+	
+	$(".btn-group button").click(function() {
+		// if($('.btn-group button').hasClass('active')){
+		// 	$('btn-group button').removeClass('active')
+		// } 
+		$(this).addClass('active');
+		
+		
+		// if($(".active")) {
+		// 	$(this).removeClass("active");
+		// }
+		// $(this).addClass("active");
+		// if(timer == 0) {
+		// 	$(this).removeClass("active");
+		// }
+	});
+	
 	$('#start').click(function() {
 	    startGame();
+	    selectLevel();
 	});
+
+	// $('#pause').click(function() {
+	//     pauseGame();
+	// });
+
 
 });
