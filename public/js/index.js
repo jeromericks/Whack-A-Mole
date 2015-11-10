@@ -27,7 +27,6 @@ $(document).ready(function() {
 
 	function randomMole() {
 		moles = (Math.floor(Math.random() * 9) + 1);
-		// console.log(moles);
 		return moles;
 	}
 
@@ -35,7 +34,6 @@ $(document).ready(function() {
 		$("[data-tile='" + random_hole + "'] img").animate({
 			top: '-80px'
 		}, duration)
-		// console.log("top");
 
 		setTimeout(function() {
 			$("[data-tile='" + random_hole + "'] img").animate({
@@ -58,7 +56,6 @@ $(document).ready(function() {
 	function intervalMole() {
 		timerInterval = setInterval(function() {
 			timer--;
-			// console.log("Timer: " + timer);
 			onRound();
 			if(timer == 0) {
 				clearInterval(timerInterval);
@@ -77,7 +74,6 @@ $(document).ready(function() {
 
 	function selectLevel() {
 		var value = $('.active').val();
-		// console.log(value);
 		switch (value) {
 		    case "easy":
 		    	duration = 1000;
@@ -89,15 +85,6 @@ $(document).ready(function() {
 		    	duration = 500;	
 		    	break;
 			}
-			// var x = "extreme";
-			// if(x) {
-			// 	switch (value) {
-			// 		case "extreme":
-			// 	    	duration = 150;	
-			// 	    	break;
-			// 		}
-			// 	}
-			// }
 	}
 
 	function onRound() {
@@ -117,14 +104,12 @@ $(document).ready(function() {
 	}
 
 	function clearDifficulty() {
-		// console.log($('.btn-default'));
 		if($('.btn-default').hasClass('active')){
 			$('.btn-default').removeClass('active');
-			// console.log($(this));
 		} 
 	}	
 
-	// $(".btn-default:first-child").addClass("active");
+	$(".btn-default:first-child").addClass("active");
 	
 	$(".btn-default").click(function() {
 		clearDifficulty();
@@ -135,16 +120,6 @@ $(document).ready(function() {
 	    startGame();
 	    selectLevel();
 	});
-
-	
-
-	// $('#nuke').click(function() {
-	// 	$(".tile").css("background-image", "url(/img/explosion.png");
-	// });
-
-	// $('#pause').click(function() {
-	//     pauseGame();
-	// });
 	
 	$(document).keyup(function(event){
 		user.push(event.keyCode);
@@ -159,7 +134,6 @@ $(document).ready(function() {
 			$("img").animate({
 				top: '-90px'
 			}, duration)
-			// console.log("top");
 			setTimeout(function() {
 				$("img").animate({
 					top: '95px'
@@ -174,12 +148,8 @@ $(document).ready(function() {
 				$("button").html(replaced);
 				startGame();
 			}
-			// $(".hole-container").css("background", "url(/img/explosion.png)no-repeat center").css("z-index", 5);
-			// $(".tile").css("z-index", -1);
 		}
 	});
-	startGame();
-	endGame();
 
 
 
