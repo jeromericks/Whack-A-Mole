@@ -120,37 +120,5 @@ $(document).ready(function() {
 	    startGame();
 	    selectLevel();
 	});
-	
-	$(document).keyup(function(event){
-		user.push(event.keyCode);
-
-		if(user[user.length - 1] != konami[user.length - 1]) {
-			user = [];
-		}
-
-		if(user.length == konami.length) {
-			alert("Nuke Mode unlocked");
-			$("img").attr("src","/img/explosion.png");
-			$("img").animate({
-				top: '-90px'
-			}, duration)
-			setTimeout(function() {
-				$("img").animate({
-					top: '95px'
-				}, duration)
-			}, duration + 750)
-			$('.btn-group').append('<button type="button" class="btn btn-default" id="reset">Reset to Mole Mode</button>')
-			$('#reset').click(function() {
-				reset = true;
-			});
-			if(reset == true) {
-				var replaced = $("body").html().replace('Reset to Nuke Mode','Reset to Mole Mode');
-				$("button").html(replaced);
-				startGame();
-			}
-		}
-	});
-
-
 
 });
